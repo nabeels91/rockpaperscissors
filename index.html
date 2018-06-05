@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rock paper scissors</title>
+</head>
+<body>
+
+
+
+<script>
+
+    var compMove = Math.random();
+    var humanMove= Math.random();
+
+
+    var rock = 0.33;
+    var paper = 0.66;
+
+
+
+    function computerPlay(){
+
+        if(compMove <= rock){
+            return 'rock';
+        }else
+        if(compMove <= paper && compMove> rock){
+            return 'paper';
+        }else
+           return 'scissors';
+
+    }
+
+    function humanPlay(){
+
+        if(humanMove <= rock){
+            return 'rock';
+        }else
+        if(humanMove <= paper && humanMove> rock){
+           return 'paper';
+        }else
+            return 'scissors';
+
+    }
+    //console.log(Math.round(compMove));// this is just  atest of the round function
+   //computer guess
+    console.log(compMove);
+    console.log('the computers selection is :'+computerPlay());
+    //humans guess
+    console.log(humanMove);
+    console.log('the humans selection is :'+humanPlay());
+
+    function game(x , y){
+            if(computerPlay()=='paper' && humanPlay()=='scissors' || humanPlay()=='scissors'  && computerPlay()=='paper'){
+           return 'Scissors wins';
+            }else
+                if (computerPlay() =='scissors' && humanPlay()=='rock' ||  humanPlay()=='scissors' && computerPlay() =='rock'){
+                return 'rock wins';
+                }else
+                    if(computerPlay() =='paper' && humanPlay()=='rock' ||  humanPlay()=='paper' && computerPlay() =='rock'){
+                    return 'paper wins';
+                    }else
+                        return 'draw';
+
+        console.log('the result is : '+ game( humanPlay(), computerPlay() ) );
+
+    }
+    console.log('the result is : '+ game( humanPlay(), computerPlay() ) );
+
+
+</script>
+</body>
+</html>
