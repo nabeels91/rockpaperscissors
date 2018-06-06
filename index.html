@@ -7,9 +7,13 @@
 <body>
 
 
-
 <script>
 
+    arr1=[];
+    arr2=[];
+    allArrs = [];
+
+  for(var a =0; a<10; a++) {
     var compMove = Math.random();
     var humanMove= Math.random();
 
@@ -28,8 +32,12 @@
             return 'paper';
         }else
            return 'scissors';
+        console.log(compMove);
+        console.log('the computers selection is :'+computerPlay());
 
     }
+    arr1.push(computerPlay());
+    console.log('Computer: arr1 : '+arr1);
 
     function humanPlay(){
 
@@ -40,32 +48,88 @@
            return 'paper';
         }else
             return 'scissors';
+        console.log(humanMove);
+        console.log('the humans selection is :'+humanPlay());
 
     }
+    arr2.push(humanPlay());
+    console.log('Human: arr2 : '+arr2);
+
+
+      function game(x, y) {
+          if (computerPlay() == 'paper' && humanPlay() == 'scissors' ) {
+              return 'Human wins with Scissors ';
+
+          }
+          else if(humanPlay() == 'paper' && computerPlay() == 'scissors'){
+              return 'Computer wins with Scissors ';
+          }
+          else if (computerPlay() == 'scissors' && humanPlay() == 'rock') {
+              return 'Human wins with rock';
+
+          }
+          else if(humanPlay() == 'scissors' && computerPlay() == 'rock'){
+              return 'Computer wins with rock';
+          }
+          else if (computerPlay() == 'paper' && humanPlay() == 'rock') {
+              return 'Computer wins with paper';
+
+          }
+          else if(humanPlay() == 'paper' && computerPlay() == 'rock'){
+              return 'Human wins with paper';
+          }
+          else
+              return 'draw';
+
+      }
+
+    console.log("Result : "+game(humanPlay(),computerPlay()));
+
+
     //console.log(Math.round(compMove));// this is just  atest of the round function
    //computer guess
-    console.log(compMove);
-    console.log('the computers selection is :'+computerPlay());
+//    console.log(compMove);
+//    console.log('the computers selection is :'+computerPlay());
     //humans guess
-    console.log(humanMove);
-    console.log('the humans selection is :'+humanPlay());
+//    console.log(humanMove);
+//    console.log('the humans selection is :'+humanPlay());
 
-    function game(x , y){
-            if(computerPlay()=='paper' && humanPlay()=='scissors' || humanPlay()=='scissors'  && computerPlay()=='paper'){
-           return 'Scissors wins';
-            }else
-                if (computerPlay() =='scissors' && humanPlay()=='rock' ||  humanPlay()=='scissors' && computerPlay() =='rock'){
-                return 'rock wins';
-                }else
-                    if(computerPlay() =='paper' && humanPlay()=='rock' ||  humanPlay()=='paper' && computerPlay() =='rock'){
-                    return 'paper wins';
-                    }else
-                        return 'draw';
 
-        console.log('the result is : '+ game( humanPlay(), computerPlay() ) );
+//    function game(x, y) {
+//          if (computerPlay() == 'paper' && humanPlay() == 'scissors' || humanPlay() == 'scissors' && computerPlay() == 'paper') {
+//              return 'Scissors wins';
+//          } else if (computerPlay() == 'scissors' && humanPlay() == 'rock' || humanPlay() == 'scissors' && computerPlay() == 'rock') {
+//              return 'rock wins';
+//          } else if (computerPlay() == 'paper' && humanPlay() == 'rock' || humanPlay() == 'paper' && computerPlay() == 'rock') {
+//              return 'paper wins';
+//          } else
+//              return 'draw';
+//
+//      }
+
+
+
+
+
+}
+
+
+    console.log(arr1);
+    console.log(arr2);
+
+
+    for(var i=0; i<arr1.length; i++){
+        allArrs.push(arr1[i]);
 
     }
-    console.log('the result is : '+ game( humanPlay(), computerPlay() ) );
+    for(var i=0; i<arr2.length; i++){
+        allArrs.push(arr2[i]);
+
+    }
+
+    console.log('the full array of all the results is as follows: '  +allArrs);
+    console.log(allArrs.length);
+    console.log(allArrs );
 
 
 </script>
