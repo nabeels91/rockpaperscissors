@@ -6,8 +6,43 @@
 </head>
 <body>
 
+html shaat.
+
+<p>rock paper or scissors buddy?</p>
+<button onclick="myFunc()">pick one</button>
+
+
+<p id="demo"></p>
 
 <script>
+//    user input
+//    var sign = prompt("What's your sign?");
+//    var promt= prompt('sup punk!', 'sure');
+
+
+
+function myFunc() {
+    humanInput =  prompt("rock paper or scissors?");
+
+    if(humanInput != null){
+        humanInput= document.getElementById("demo").innerHTML=humanInput;
+    }
+
+    console.log("HUMANINPUT "+humanInput);
+}
+
+function humanIn() {
+
+    if (humanInput == 'rock') {
+        console.log('the Human has selected : ' + humanInput);
+    } else if (humanInput == 'paper') {
+        console.log('the Human has selected : ' + humanInput);
+    } else if (humanInput == 'scissors') {
+        console.log('the Human has selected : ' + humanInput);
+    }
+
+}
+
 
     arr1=[];
     arr2=[];
@@ -21,7 +56,8 @@
     var rock = 0.33;
     var paper = 0.66;
 
-
+      var compWins;
+      var humanWins;
 
     function computerPlay(){
 
@@ -56,27 +92,32 @@
     console.log('Human: arr2 : '+arr2);
 
 
+
       function game(x, y) {
           if (computerPlay() == 'paper' && humanPlay() == 'scissors' ) {
               return 'Human wins with Scissors ';
-
+              humanWins++;
           }
           else if(humanPlay() == 'paper' && computerPlay() == 'scissors'){
               return 'Computer wins with Scissors ';
+              compWins++
           }
           else if (computerPlay() == 'scissors' && humanPlay() == 'rock') {
               return 'Human wins with rock';
-
+              humanWins++;
           }
           else if(humanPlay() == 'scissors' && computerPlay() == 'rock'){
               return 'Computer wins with rock';
+              compWins++;
           }
           else if (computerPlay() == 'paper' && humanPlay() == 'rock') {
               return 'Computer wins with paper';
+              compWins++;
 
           }
           else if(humanPlay() == 'paper' && computerPlay() == 'rock'){
               return 'Human wins with paper';
+              humanWins++;
           }
           else
               return 'draw';
@@ -84,7 +125,8 @@
       }
 
     console.log("Result : "+game(humanPlay(),computerPlay()));
-
+    console.log("human wins "+ humanWins);
+      console.log("Computer wins "+ compWins);
 
     //console.log(Math.round(compMove));// this is just  atest of the round function
    //computer guess
@@ -131,6 +173,28 @@
     console.log(allArrs.length);
     console.log(allArrs );
 
+    var numRocks=0;
+    var numPaper=0;
+    var numScissors=0;
+
+    for(var p = 0; p < 10; p++){
+        if(arr1[p]='rock'){
+            numRocks++;
+        }else
+            if(arr1[p]='paper'){
+            numPaper++
+            }else
+                if(arr1[p]='scissors'){
+                numScissors++
+                }
+
+   }
+
+
+//analysis of inputs per user
+//    console.log("the number of times the Computer picked Rocks is :"+numRocks);
+//    console.log("the number of times the Computer picked Paper is :"+numPaper);
+//    console.log("the number of times the Computer picked Scissors is :"+numScissors);
 
 </script>
 </body>
