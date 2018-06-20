@@ -9,6 +9,7 @@
 html shaat.
 
 <p>rock paper or scissors buddy?</p>
+
 <button onclick="myFunc()">pick one</button>
 
 
@@ -19,103 +20,68 @@ html shaat.
 //    var sign = prompt("What's your sign?");
 //    var promt= prompt('sup punk!', 'sure');
 
-
-
 function myFunc() {
-    humanInput =  prompt("rock paper or scissors?");
-
-    if(humanInput != null){
-        humanInput= document.getElementById("demo").innerHTML=humanInput;
+    input =  prompt("rock paper or scissors?");
+    if( input != null){
+        if (input == 'rock' ) {
+            console.log('the Human has selected : ' + input);
+        } else if (input == 'paper') {
+            console.log('the Human has selected : ' + input);
+        } else if (input == 'scissors') {
+            console.log('the Human has selected : ' + input);
+        } else return 'wrong input';
+        input= document.getElementById("demo").innerHTML=input;
     }
-
-    console.log("HUMANINPUT "+humanInput);
 }
 
-function humanIn() {
-
-    if (humanInput == 'rock') {
-        console.log('the Human has selected : ' + humanInput);
-    } else if (humanInput == 'paper') {
-        console.log('the Human has selected : ' + humanInput);
-    } else if (humanInput == 'scissors') {
-        console.log('the Human has selected : ' + humanInput);
-    }
-
-}
-
-
-    arr1=[];
-    arr2=[];
-    allArrs = [];
-
-  for(var a =0; a<10; a++) {
     var compMove = Math.random();
-    var humanMove= Math.random();
-
-
     var rock = 0.33;
     var paper = 0.66;
 
-      var compWins;
-      var humanWins;
-
     function computerPlay(){
-
         if(compMove <= rock){
             return 'rock';
         }else
+
         if(compMove <= paper && compMove> rock){
             return 'paper';
         }else
+
            return 'scissors';
         console.log(compMove);
         console.log('the computers selection is :'+computerPlay());
 
     }
-    arr1.push(computerPlay());
-    console.log('Computer: arr1 : '+arr1);
-
-    function humanPlay(){
-
-        if(humanMove <= rock){
-            return 'rock';
-        }else
-        if(humanMove <= paper && humanMove> rock){
-           return 'paper';
-        }else
-            return 'scissors';
-        console.log(humanMove);
-        console.log('the humans selection is :'+humanPlay());
-
-    }
-    arr2.push(humanPlay());
-    console.log('Human: arr2 : '+arr2);
 
 
+    console.log("human move is : "+myFunc());
+    console.log("computer move is : "+computerPlay());
 
       function game(x, y) {
-          if (computerPlay() == 'paper' && humanPlay() == 'scissors' ) {
+        humanWins=0;
+        compWins=0
+          if (computerPlay() == 'paper' && myFunc() == 'scissors' ) {
               return 'Human wins with Scissors ';
               humanWins++;
           }
-          else if(humanPlay() == 'paper' && computerPlay() == 'scissors'){
+          else if(myFunc() == 'paper' && computerPlay() == 'scissors'){
               return 'Computer wins with Scissors ';
               compWins++
           }
-          else if (computerPlay() == 'scissors' && humanPlay() == 'rock') {
+          else if (computerPlay() == 'scissors' && myFunc() == 'rock') {
               return 'Human wins with rock';
               humanWins++;
           }
-          else if(humanPlay() == 'scissors' && computerPlay() == 'rock'){
+          else if(myFunc() == 'scissors' && computerPlay() == 'rock'){
               return 'Computer wins with rock';
               compWins++;
           }
-          else if (computerPlay() == 'paper' && humanPlay() == 'rock') {
+          else if (computerPlay() == 'paper' && myFunc() == 'rock') {
               return 'Computer wins with paper';
               compWins++;
 
           }
-          else if(humanPlay() == 'paper' && computerPlay() == 'rock'){
+          else if(myFunc() == 'paper' && computerPlay() == 'rock'){
               return 'Human wins with paper';
               humanWins++;
           }
@@ -124,77 +90,24 @@ function humanIn() {
 
       }
 
-    console.log("Result : "+game(humanPlay(),computerPlay()));
-    console.log("human wins "+ humanWins);
-      console.log("Computer wins "+ compWins);
 
-    //console.log(Math.round(compMove));// this is just  atest of the round function
-   //computer guess
-//    console.log(compMove);
-//    console.log('the computers selection is :'+computerPlay());
-    //humans guess
-//    console.log(humanMove);
-//    console.log('the humans selection is :'+humanPlay());
+      myFunc();
+console.log("human input "+input);
+      game(myFunc(),computerPlay());
+    console.log("Result : "+game(myFunc(),computerPlay()));
 
 
-//    function game(x, y) {
-//          if (computerPlay() == 'paper' && humanPlay() == 'scissors' || humanPlay() == 'scissors' && computerPlay() == 'paper') {
-//              return 'Scissors wins';
-//          } else if (computerPlay() == 'scissors' && humanPlay() == 'rock' || humanPlay() == 'scissors' && computerPlay() == 'rock') {
-//              return 'rock wins';
-//          } else if (computerPlay() == 'paper' && humanPlay() == 'rock' || humanPlay() == 'paper' && computerPlay() == 'rock') {
-//              return 'paper wins';
-//          } else
-//              return 'draw';
 //
-//      }
-
-
-
-
-
-}
-
-
-    console.log(arr1);
-    console.log(arr2);
-
-
-    for(var i=0; i<arr1.length; i++){
-        allArrs.push(arr1[i]);
-
-    }
-    for(var i=0; i<arr2.length; i++){
-        allArrs.push(arr2[i]);
-
-    }
-
-    console.log('the full array of all the results is as follows: '  +allArrs);
-    console.log(allArrs.length);
-    console.log(allArrs );
-
-    var numRocks=0;
-    var numPaper=0;
-    var numScissors=0;
-
-    for(var p = 0; p < 10; p++){
-        if(arr1[p]='rock'){
-            numRocks++;
-        }else
-            if(arr1[p]='paper'){
-            numPaper++
-            }else
-                if(arr1[p]='scissors'){
-                numScissors++
-                }
-
-   }
-
-
-//analysis of inputs per user
-//    console.log("the number of times the Computer picked Rocks is :"+numRocks);
-//    console.log("the number of times the Computer picked Paper is :"+numPaper);
-//    console.log("the number of times the Computer picked Scissors is :"+numScissors);
+//// the allArray- all the selections
+//    for(var i=0; i<arr1.length; i++){
+//        allArrs.push(arr1[i]);
+//
+//    }
+//    for(var i=0; i<arr2.length; i++){
+//        allArrs.push(arr2[i]);
+//
+//    }
+//
 
 </script>
 </body>
