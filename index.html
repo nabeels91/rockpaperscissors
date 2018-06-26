@@ -1,114 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>rock paper scissors</title>
-</head>
-<body>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>rock paper scissors</title>
+        </head>
+        <body>
 
-html shaat.
+        html shaat.
 
-<p>rock paper or scissors buddy?</p>
+        <p>rock paper or scissors buddy?</p>
 
-<button onclick="myFunc()">pick one</button>
+        <button onclick="demo">pick one</button>
 
+        <h2 id="demo"></h2>
 
-<p id="demo"></p>
-
-<script>
-//    user input
-//    var sign = prompt("What's your sign?");
-//    var promt= prompt('sup punk!', 'sure');
-
-function myFunc() {
-    input =  prompt("rock paper or scissors?");
-    if( input != null){
-        if (input == 'rock' ) {
-            console.log('the Human has selected : ' + input);
-        } else if (input == 'paper') {
-            console.log('the Human has selected : ' + input);
-        } else if (input == 'scissors') {
-            console.log('the Human has selected : ' + input);
-        } else return 'wrong input';
-        input= document.getElementById("demo").innerHTML=input;
-    }
-}
-
-    var compMove = Math.random();
-    var rock = 0.33;
-    var paper = 0.66;
-
-    function computerPlay(){
-        if(compMove <= rock){
-            return 'rock';
-        }else
-
-        if(compMove <= paper && compMove> rock){
-            return 'paper';
-        }else
-
-           return 'scissors';
-        console.log(compMove);
-        console.log('the computers selection is :'+computerPlay());
-
-    }
+        <script>
+        //    user input
+        //    var sign = prompt("What's your sign?");
+        //    var promt= prompt('sup punk!', 'sure');
 
 
-    console.log("human move is : "+myFunc());
-    console.log("computer move is : "+computerPlay());
+        var input;
 
-      function game(x, y) {
-        humanWins=0;
-        compWins=0
-          if (computerPlay() == 'paper' && myFunc() == 'scissors' ) {
-              return 'Human wins with Scissors ';
-              humanWins++;
+        var arrayHuman =[];
+        var arrayComp=[];
+        var compMove = Math.random();
+        var rock = 0.33;
+        var paper = 0.66;
+        var cMove = computerPlay();
+        input =  prompt("rock paper or scissors?");
+
+        function humanMove() {
+
+            if( input != null){
+                if (input == 'rock' ) {
+                   return console.log('the Human has selected 1 : ' + input);
+                } else if (input == 'paper') {
+                    return console.log('the Human has selected 2 : ' + input);
+                } else if (input == 'scissors') {
+                   return console.log('the Human has selected 3 : ' + input);
+                } else return console.log('wrong input');
+                input= document.getElementById("demo").innerHTML=input;
+
+            }
+        }
+
+
+        function computerPlay(){
+            if(compMove <= rock){
+                return 'rock';
+            }else if(compMove <= paper && compMove> rock){
+                return 'paper';
+            }else
+               return 'scissors';
+
+
+        }
+
+
+
+          function game(x, y) {
+
+              if (computerPlay() == 'paper' && humanMove() == 'scissors' ) {
+                  return 'Human wins with Scissors ';
+
+              }
+              else if(humanMove() == 'paper' && computerPlay() == 'scissors'){
+                  return 'Computer wins with Scissors ';
+
+              }
+              else if (computerPlay() == 'scissors' && humanMove() == 'rock') {
+                  return 'Human wins with rock';
+
+              }
+              else if(humanMove() == 'scissors' && computerPlay() == 'rock'){
+                  return 'Computer wins with rock';
+
+              }
+              else if (computerPlay() == 'paper' && humanMove() == 'rock') {
+                  return 'Computer wins with paper';
+
+
+              }
+              else if(humanMove() == 'paper' && computerPlay() == 'rock'){
+                  return 'Human wins with paper';
+
+              }
+              else
+                  return 'draw';
+
           }
-          else if(myFunc() == 'paper' && computerPlay() == 'scissors'){
-              return 'Computer wins with Scissors ';
-              compWins++
-          }
-          else if (computerPlay() == 'scissors' && myFunc() == 'rock') {
-              return 'Human wins with rock';
-              humanWins++;
-          }
-          else if(myFunc() == 'scissors' && computerPlay() == 'rock'){
-              return 'Computer wins with rock';
-              compWins++;
-          }
-          else if (computerPlay() == 'paper' && myFunc() == 'rock') {
-              return 'Computer wins with paper';
-              compWins++;
+//this is the function calls
 
-          }
-          else if(myFunc() == 'paper' && computerPlay() == 'rock'){
-              return 'Human wins with paper';
-              humanWins++;
-          }
-          else
-              return 'draw';
-
-      }
+        humanMove();
+        arrayHuman.push(input);
 
 
-      myFunc();
-console.log("human input "+input);
-      game(myFunc(),computerPlay());
-    console.log("Result : "+game(myFunc(),computerPlay()));
+        console.log("computer move is: "+cMove);
+        //        console.log("game result : "+game(input,cMove));
+
+        arrayComp.push(cMove);
+
+        game(input,cMove);
+        console.log(arrayHuman);
+        console.log(arrayComp);
 
 
-//
-//// the allArray- all the selections
-//    for(var i=0; i<arr1.length; i++){
-//        allArrs.push(arr1[i]);
-//
-//    }
-//    for(var i=0; i<arr2.length; i++){
-//        allArrs.push(arr2[i]);
-//
-//    }
-//
 
-</script>
-</body>
-</html>
+
+
+        //
+        //// the allArray- all the selections
+        //    for(var i=0; i<arr1.length; i++){
+        //        allArrs.push(arr1[i]);
+        //
+        //    }
+        //    for(var i=0; i<arr2.length; i++){
+        //        allArrs.push(arr2[i]);
+        //
+        //    }
+        //
+
+        </script>
+        </body>
+        </html>
