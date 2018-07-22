@@ -1,201 +1,300 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>rock paper scissors</title>
-</head>
-<body>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>rock paper scissors</title>
+        </head>
+        <body>
 
-html shaat.
+        <h1>rock paper or scissors </h1>
 
-<p>rock paper or scissors buddy?</p>
-<button onclick="myFunc()">pick one</button>
+        <!--<p id="tester">timeStamp</p>
+        <button onclick="getElementById('tester').innerHTML=new Date().toLocaleString()">What is the time?</button>
+        -->
 
-
-<p id="demo"></p>
-
-<script>
-//    user input
-//    var sign = prompt("What's your sign?");
-//    var promt= prompt('sup punk!', 'sure');
+        <!--<button onclick="computerPlay()" >compMove</button>-->
+        <h3 id="compM">computer move displayed here</h3>
 
 
-
-function myFunc() {
-    humanInput =  prompt("rock paper or scissors?");
-
-    if(humanInput != null){
-        humanInput= document.getElementById("demo").innerHTML=humanInput;
-    }
-
-    console.log("HUMANINPUT "+humanInput);
-}
-
-function humanIn() {
-
-    if (humanInput == 'rock') {
-        console.log('the Human has selected : ' + humanInput);
-    } else if (humanInput == 'paper') {
-        console.log('the Human has selected : ' + humanInput);
-    } else if (humanInput == 'scissors') {
-        console.log('the Human has selected : ' + humanInput);
-    }
-
-}
+        <!--<button onclick="humanPlay()">click it all on on the floor</button>-->
+        <h3 id="funB">humans move displayed here</h3>
 
 
-    arr1=[];
-    arr2=[];
-    allArrs = [];
-
-  for(var a =0; a<10; a++) {
-    var compMove = Math.random();
-    var humanMove= Math.random();
+        <h1 id="text1">Game result here</h1>
+        <button onclick="theGame()">push the button human</button>
 
 
-    var rock = 0.33;
-    var paper = 0.66;
+        <script>
 
-      var compWins;
-      var humanWins;
 
-    function computerPlay(){
+           function theGame() {
+               var arrayHuman = [];
+               var arrayComp = [];
+               var rock = 0.33;
+               var paper = 0.66;
 
-        if(compMove <= rock){
-            return 'rock';
-        }else
-        if(compMove <= paper && compMove> rock){
-            return 'paper';
-        }else
-           return 'scissors';
-        console.log(compMove);
-        console.log('the computers selection is :'+computerPlay());
+               // the plan: 1 make the computer selection not a fucntion.
+               // 2- make the user selection not a fucntion
+               // take these 2 variables (human and computer input) and compare them in Game();
 
-    }
-    arr1.push(computerPlay());
-    console.log('Computer: arr1 : '+arr1);
+               //   human selection
 
-    function humanPlay(){
+               var text;
+               var prom = prompt("Human!::rock paper or scissors?");
+               var hum = "human : ";
+               if ((prom == "rock") || (prom == "paper") || (prom == "scissors")) {
+                   text = hum + prom;
+                   console.log(text);
+               }
+               else if (prom == null || prom == "") {
+                   text = "you said nought";
+                   prom = hum + text;
+                   console.log(text);
+               } else if (prom !== "rock" || prom !== "paper" || prom !== "scissors") {
+                   text = "wrong input, try again";
+                   prom = hum + text;
+                   console.log(text);
+               }
 
-        if(humanMove <= rock){
-            return 'rock';
-        }else
-        if(humanMove <= paper && humanMove> rock){
-           return 'paper';
-        }else
-            return 'scissors';
-        console.log(humanMove);
-        console.log('the humans selection is :'+humanPlay());
+               document.getElementById("funB").innerHTML = text;
 
-    }
-    arr2.push(humanPlay());
-    console.log('Human: arr2 : '+arr2);
+
+               // Computer selection
+
+               var compMove = Math.random();
+               var rreturn;
+               var comp = "computer : ";
+
+               if (compMove <= rock) {
+                   rreturn = 'rock';
+                   console.log(comp + rreturn);
+               } else if (compMove <= paper && compMove > rock) {
+                   rreturn = 'paper';
+                   console.log(comp + rreturn);
+               } else {
+                   rreturn = 'scissors';
+                   console.log(comp + rreturn);
+               }
+
+               document.getElementById("compM").innerHTML = comp + rreturn;
 
 
 
-      function game(x, y) {
-          if (computerPlay() == 'paper' && humanPlay() == 'scissors' ) {
-              return 'Human wins with Scissors ';
-              humanWins++;
-          }
-          else if(humanPlay() == 'paper' && computerPlay() == 'scissors'){
-              return 'Computer wins with Scissors ';
-              compWins++
-          }
-          else if (computerPlay() == 'scissors' && humanPlay() == 'rock') {
-              return 'Human wins with rock';
-              humanWins++;
-          }
-          else if(humanPlay() == 'scissors' && computerPlay() == 'rock'){
-              return 'Computer wins with rock';
-              compWins++;
-          }
-          else if (computerPlay() == 'paper' && humanPlay() == 'rock') {
-              return 'Computer wins with paper';
-              compWins++;
 
-          }
-          else if(humanPlay() == 'paper' && computerPlay() == 'rock'){
-              return 'Human wins with paper';
-              humanWins++;
-          }
-          else
-              return 'draw';
+                   var inputC = rreturn;
+                   inputH = prom;
+                   var winner = "human wins";
 
-      }
+                   if (inputC == inputH) {
+                       winner = "Draw, play again";
+                   }
+                   else if ((inputH == "paper" && inputC == "scissors") ||
+                       (inputH == 'scissors' && inputC == 'rock') ||
+                       (inputC == 'paper' && inputH == 'rock')) {
+                       console.log('Computer wins with ' + inputC);
+                       winner = "computer wins";
+                   }
 
-    console.log("Result : "+game(humanPlay(),computerPlay()));
-    console.log("human wins "+ humanWins);
-      console.log("Computer wins "+ compWins);
-
-    //console.log(Math.round(compMove));// this is just  atest of the round function
-   //computer guess
-//    console.log(compMove);
-//    console.log('the computers selection is :'+computerPlay());
-    //humans guess
-//    console.log(humanMove);
-//    console.log('the humans selection is :'+humanPlay());
+                   else {
+//                    if ((inputC == 'paper' && inputH == 'scissors') ||
+//                    (inputC == 'scissors' && inputH == 'rock')||
+//                    (inputH == 'paper' && inputC == 'rock')) {
+                       console.log('Human wins with ' + inputH);
+                       //winner = "human wins";
+                   }
 
 
-//    function game(x, y) {
-//          if (computerPlay() == 'paper' && humanPlay() == 'scissors' || humanPlay() == 'scissors' && computerPlay() == 'paper') {
-//              return 'Scissors wins';
-//          } else if (computerPlay() == 'scissors' && humanPlay() == 'rock' || humanPlay() == 'scissors' && computerPlay() == 'rock') {
-//              return 'rock wins';
-//          } else if (computerPlay() == 'paper' && humanPlay() == 'rock' || humanPlay() == 'paper' && computerPlay() == 'rock') {
-//              return 'paper wins';
-//          } else
-//              return 'draw';
+                   document.getElementById("text1").innerHTML = winner;
+
+
+
+
+
+           }
+
+
+//                    if (inputH == 'paper' && inputC == 'scissors') {
+//                        console.log('Computer wins with Scissors ');
+//                        winner = "computer";
 //
-//      }
+//                    }
+//                    else if (inputC == 'paper' && inputH == 'scissors') {
+//                        console.log('Human wins with Scissors ');
+//                        winner = "human";
+//                    }
+//                    else if (inputH == 'scissors' && inputC == 'rock') {
+//                        console.log('Computer wins with rock');
+//                        winner = "computer";
+//                    }
+//                    else if (inputC == 'scissors' && inputH == 'rock') {
+//                        console.log('Human wins with rock');
+//                        winner = "human";
+//                    }
+//                    else if (inputH == 'paper' && inputC == 'rock') {
+//                        console.log('Human wins with paper');
+//                        winner = "human";
+//                    }
+//                    else if(inputC == 'paper' && inputH == 'rock') {
+//                        console.log('Computer wins with paper');
+//                        winner = "computer";
+//                    }
+//
+//                    document.getElementById("text1").innerHTML = winner;
+//                    console.log("result is: " + winner + " wins");
 
 
 
 
 
-}
 
 
-    console.log(arr1);
-    console.log(arr2);
 
 
-    for(var i=0; i<arr1.length; i++){
-        allArrs.push(arr1[i]);
-
-    }
-    for(var i=0; i<arr2.length; i++){
-        allArrs.push(arr2[i]);
-
-    }
-
-    console.log('the full array of all the results is as follows: '  +allArrs);
-    console.log(allArrs.length);
-    console.log(allArrs );
-
-    var numRocks=0;
-    var numPaper=0;
-    var numScissors=0;
-
-    for(var p = 0; p < 10; p++){
-        if(arr1[p]='rock'){
-            numRocks++;
-        }else
-            if(arr1[p]='paper'){
-            numPaper++
-            }else
-                if(arr1[p]='scissors'){
-                numScissors++
-                }
-
-   }
 
 
-//analysis of inputs per user
-//    console.log("the number of times the Computer picked Rocks is :"+numRocks);
-//    console.log("the number of times the Computer picked Paper is :"+numPaper);
-//    console.log("the number of times the Computer picked Scissors is :"+numScissors);
 
-</script>
-</body>
-</html>
+
+//                function again(){
+//                    var text;
+//                    var promp = prompt("something shall be said and written");
+//
+//                    if(promp == null || promp == ""){
+//                        text = "you suck";
+//                    }else{
+//                        text= "words where said, and they where", promp;
+//                    }
+//
+//                    document.getElementById("placeholder").innerHTML = promp;
+//
+//                }
+//
+//        function funcName() {
+//            var words;
+//            var prompter = prompt("say something");
+//
+//         if (prompter == null || prompter == "" ){
+//                words = "you said nothing";
+//         }else
+//         {
+//             words = "you said "+ prompter;
+//         }
+//            document.getElementById("shitShow").innerHTML= words;
+//
+//        }
+//
+//         function myFunc(){
+//             var txt;
+//             var humanGuess= prompt("whats you selection: rock paper or scissors?");
+//
+//             if (humanGuess == null || humanGuess == ""){
+//                 txt= "you picked nought?";
+//             }else{
+//                 txt= "you picked: " + humanGuess.toUpperCase();
+//             }
+//
+//             document.getElementById("trailer").innerHTML = txt;
+//         }
+
+
+
+
+
+
+        //player selection:
+
+//        function playerSelection() {
+//            input=prompt("rock paper or scissors?");
+//
+//            if( input != null){
+//                if (input == 'rock' ) {
+//                   return console.log('the Human has selected 1 : ' + input);
+//                } else if (input == 'paper') {
+//                    return console.log('the Human has selected 2 : ' + input);
+//                } else if (input == 'scissors') {
+//                   return console.log('the Human has selected 3 : ' + input);
+//                } else return console.log('wrong input');
+//
+//
+//            }
+//            input= document.getElementById("demo").innerHTML=input;
+//        }
+//
+//        playerSelection();
+//        console.log("again "+ playerSelection());
+
+
+//             Corrected version-- it now works!
+//        function inputFun() {
+//            var hSelection ;
+//            var prop= prompt("pick rock paper or scissors mofo!");
+//
+//            if (prop == null || prop =="" ){
+//                hSelection = "say something ya tool!";
+//            }
+//            else{
+//                hSelection = prop;
+//            }
+//            document.getElementById("text1").innerHTML = hSelection;
+//
+//        }
+
+
+
+
+
+
+
+
+        //game(input, computerSelection);
+
+//        console.log(arrayHuman);
+//        console.log(arrayComp);
+
+
+
+
+
+        //
+        //// the allArray- all the selections
+        //    for(var i=0; i<arr1.length; i++){
+        //        allArrs.push(arr1[i]);
+        //
+        //    }
+        //    for(var i=0; i<arr2.length; i++){
+        //        allArrs.push(arr2[i]);
+        //
+        //    }
+        //
+
+        </script>
+
+
+        <!--
+
+        this is in the body-- moved for aesthetic purposes.
+
+
+        <!-- <input type="button" value="tester" id="tester" > -->
+
+
+
+
+        <!-- this is from online resourses.. it works well
+        <button onclick="myFunc()">push it to the limit</button>
+
+        <h3 id="trailer">here shows your guess</h3>
+
+
+         <!-- of memory attempt to make a html prompt link
+
+
+        <button onclick="funcName()">words</button>
+        <h1 id="shitShow">this is where your shitShows </h1>
+
+
+        <button onclick="again()">button!</button>
+        <h2 id="placeholder">it will be here</h2>
+
+        -->
+        </body>
+        </html>
