@@ -83,7 +83,7 @@
 
                    var inputC = rreturn;
                    inputH = prom;
-                   var winner = "human wins";
+                   var winner = "";
 
                    if (inputC == inputH) {
                        winner = "Draw, play again";
@@ -95,10 +95,10 @@
                        winner = "computer wins";
                    }
 
-                   else {
-//                    if ((inputC == 'paper' && inputH == 'scissors') ||
-//                    (inputC == 'scissors' && inputH == 'rock')||
-//                    (inputH == 'paper' && inputC == 'rock')) {
+                   else
+                    if ((inputC == 'paper' && inputH == 'scissors') ||
+                    (inputC == 'scissors' && inputH == 'rock')||
+                    (inputH == 'paper' && inputC == 'rock')) {
                        console.log('Human wins with ' + inputH);
                        //winner = "human wins";
                    }
