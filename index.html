@@ -82,26 +82,30 @@
 
 
                    var inputC = rreturn;
-                   inputH = prom;
+                   var inputH = prom;
                    var winner = "";
 
                    if (inputC == inputH) {
                        winner = "Draw, play again";
+                       console.log(winner);
                    }
                    else if ((inputH == "paper" && inputC == "scissors") ||
                        (inputH == 'scissors' && inputC == 'rock') ||
                        (inputC == 'paper' && inputH == 'rock')) {
-                       console.log('Computer wins with ' + inputC);
                        winner = "computer wins";
+                       console.log('Computer wins with ' + inputC);
+
                    }
 
                    else
                     if ((inputC == 'paper' && inputH == 'scissors') ||
                     (inputC == 'scissors' && inputH == 'rock')||
                     (inputH == 'paper' && inputC == 'rock')) {
+                        winner = "human wins";
                        console.log('Human wins with ' + inputH);
-                       //winner = "human wins";
+
                    }
+
 
 
                    document.getElementById("text1").innerHTML = winner;
