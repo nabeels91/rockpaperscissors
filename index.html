@@ -24,97 +24,150 @@
         <button onclick="theGame()">push the button human</button>
 
 
+        <h1 id="5games"></h1>
+        <h1 id="overall"></h1>
         <script>
 
 
-           function theGame() {
-               var arrayHuman = [];
-               var arrayComp = [];
-               var rock = 0.33;
-               var paper = 0.66;
-
-               // the plan: 1 make the computer selection not a fucntion.
-               // 2- make the user selection not a fucntion
-               // take these 2 variables (human and computer input) and compare them in Game();
-
-               //   human selection
-
-               var text;
-               var prom = prompt("Human!::rock paper or scissors?");
-               var hum = "human : ";
-               if ((prom == "rock") || (prom == "paper") || (prom == "scissors")) {
-                   text = hum + prom;
-                   console.log(text);
-               }
-               else if (prom == null || prom == "") {
-                   text = "you said nought";
-                   prom = hum + text;
-                   console.log(text);
-               } else if (prom !== "rock" || prom !== "paper" || prom !== "scissors") {
-                   text = "wrong input, try again";
-                   prom = hum + text;
-                   console.log(text);
-               }
-
-               document.getElementById("funB").innerHTML = text;
+          var masterArray = [];
+          var arrayWins = [];
 
 
-               // Computer selection
-
-               var compMove = Math.random();
-               var rreturn;
-               var comp = "computer : ";
-
-               if (compMove <= rock) {
-                   rreturn = 'rock';
-                   console.log(comp + rreturn);
-               } else if (compMove <= paper && compMove > rock) {
-                   rreturn = 'paper';
-                   console.log(comp + rreturn);
-               } else {
-                   rreturn = 'scissors';
-                   console.log(comp + rreturn);
-               }
-
-               document.getElementById("compM").innerHTML = comp + rreturn;
+              function theGame() {
+                  var arrayHuman = [];
+                  var arrayComp = [];
+                  var rock = 0.33;
+                  var paper = 0.66;
 
 
+                  // the plan: 1 make the computer selection not a fucntion.
+                  // 2- make the user selection not a fucntion
+                  // take these 2 variables (human and computer input) and compare them in Game();
+
+                  //   human selection
+
+                  var text;
+                  var prom = prompt("Human! - rock paper or scissors?");
+                  var hum = "human : ";
+                  if ((prom == "rock") || (prom == "paper") || (prom == "scissors")) {
+                      text = hum + prom;
+                      console.log(text);
+                  }
+                  else if (prom == null || prom == "") {
+                      text = "you said nought";
+                      prom = hum + text;
+                      console.log(text);
+                  } else if (prom !== "rock" || prom !== "paper" || prom !== "scissors") {
+                      text = "wrong input, try again";
+                      prom = hum + text;
+                      console.log(text);
+                  }
+
+                  document.getElementById("funB").innerHTML = text;
+
+                  arrayHuman.push(prom);
+                  console.log("Human Array: " + arrayHuman);
 
 
-                   var inputC = rreturn;
-                   var inputH = prom;
-                   var winner = "";
+                  // if ((prom == null || prom == "") || (prom !== "rock" || prom !== "paper" || prom !== "scissors")){}
 
-                   if (inputC == inputH) {
-                       winner = "Draw, play again";
-                       console.log(winner);
-                   }
-                   else if ((inputH == "paper" && inputC == "scissors") ||
-                       (inputH == 'scissors' && inputC == 'rock') ||
-                       (inputC == 'paper' && inputH == 'rock')) {
-                       winner = "computer wins";
-                       console.log('Computer wins with ' + inputC);
+                  // Computer selection
 
-                   }
+                  var compMove = Math.random();
+                  var rreturn;
+                  var comp = "computer : ";
 
-                   else
-                    if ((inputC == 'paper' && inputH == 'scissors') ||
-                    (inputC == 'scissors' && inputH == 'rock')||
-                    (inputH == 'paper' && inputC == 'rock')) {
-                        winner = "human wins";
-                       console.log('Human wins with ' + inputH);
+                  if (compMove <= rock) {
+                      rreturn = 'rock';
+                      console.log(comp + rreturn);
+                  } else if (compMove <= paper && compMove > rock) {
+                      rreturn = 'paper';
+                      console.log(comp + rreturn);
+                  } else {
+                      rreturn = 'scissors';
+                      console.log(comp + rreturn);
+                  }
 
-                   }
+                  document.getElementById("compM").innerHTML = comp + rreturn;
+
+                  arrayComp.push(rreturn);
+                  console.log("Computer Array: " + arrayComp);
+
+                  // comparison between comp and human
+                  var inputC = rreturn;
+                  var inputH = prom;
+                  var winner = "";
+
+                  if (inputC == inputH) {
+                      winner = "Draw";
+                      console.log(winner);
+                  }
+
+                  else if ((inputH == "paper" && inputC == "scissors") ||
+                      (inputH == 'scissors' && inputC == 'rock') ||
+                      (inputC == 'paper' && inputH == 'rock')) {
+                      winner = "computer";
+                      console.log(winner + " wins with " + inputC);
+
+                  }
+
+                  else if ((inputC == 'paper' && inputH == 'scissors') ||
+                      (inputC == 'scissors' && inputH == 'rock') ||
+                      (inputH == 'paper' && inputC == 'rock')) {
+                      winner = "human";
+                      console.log(winner + " wins with " + inputH);
+
+                  }
+
+                  if ((winner == "computer") || (winner == "human")) {
+                      document.getElementById("text1").innerHTML = "Result : " + winner + " wins";
+                  }
+                  else
+                      document.getElementById("text1").innerHTML = "Result : " + winner;
 
 
 
-                   document.getElementById("text1").innerHTML = winner;
+
+                  if ((winner == "Draw") || (winner == "")) {
+                      masterArray;
+                      console.table(masterArray);
+
+                  } else {
+                      masterArray.push([inputC, inputH, winner]);
+                      arrayWins.push(winner);
+                      console.table(masterArray);
+                      console.log(arrayWins);
+                  }
 
 
+                  var cWins=0;
+                  var hWins=0;
+                  if (masterArray.length == 5) {
+
+                      for(var i=0; i <5; i++){
+                          if(arrayWins[i] == "computer"){
+                              ++cWins;
+                          }else{
+                              ++hWins;
+
+                          }
+
+                      }
+                      console.log("computer wins : " + cWins);
+                      console.log("human wins : "+ hWins);
+                      document.getElementById("5games").innerHTML = "result after 5 games : " + "human Wins: "+ hWins + ", computer wins "+ cWins;
+                      var oWinner;
+                      if(cWins > hWins){
+                          oWinner = "computer";
+                      }
+                      else {
+                          oWinner = "human";
+                      }
+                      document.getElementById("overall").innerHTML = "overall winner : "+oWinner;
 
 
-
-           }
+                  }
+              }
 
 
 //                    if (inputH == 'paper' && inputC == 'scissors') {
