@@ -6,7 +6,14 @@
         </head>
         <body>
 
-        <h1>rock paper or scissors </h1>
+        <h1>rock paper scissors </h1>
+
+        <!-- this is the tester for the rock paper scissors app.. image input rather than words -->
+        <button id="rockImg"> <img src="../rockPaperScissors/rock.jpg" height="150px"; width="150px"></button>
+        <button id="paperImg"> <img src="../rockPaperScissors/paper.jpg" height="150px"; width="150px"></button>
+        <button id="scissorsImg"> <img src="../rockPaperScissors/scissors.jpg" height="150px"; width="150px"></button>
+
+
 
         <!--<p id="tester">timeStamp</p>
         <button onclick="getElementById('tester').innerHTML=new Date().toLocaleString()">What is the time?</button>
@@ -21,11 +28,14 @@
 
 
         <h1 id="text1">Game result here</h1>
-        <button id="thebutton" onclick="theGame()">push the button human</button>
+        <!--<button id="thebutton" onclick="theGame()">push the button human</button>-->
 
 
         <h1 id="5games"></h1>
         <h1 id="overall"></h1>
+
+
+
         <script>
 
 
@@ -33,6 +43,39 @@
           var arrayWins = [];
 
 
+
+          var clicked;
+
+          //rock
+          var rockImg = document.querySelector("#rockImg");
+          rockImg.addEventListener('click', () =>
+          {
+              console.log("rock clicked");
+          //alert("click rock");
+          clicked= 'rock';
+
+          }
+          );
+          //paper
+          var paperImg = document.querySelector("#paperImg");
+          paperImg.addEventListener('click', () =>
+          {
+              console.log("paper clicked");
+         // alert("click paper");
+          clicked= 'paper';
+
+          }
+          );
+          //scissors
+          var scissorsImg = document.querySelector("#scissorsImg");
+          scissorsImg.addEventListener('click', () =>
+          {
+              console.log("scissors clicked");
+         // alert("click scissors");
+          clicked= 'scissors';
+          }
+
+          );
 
 
               function theGame() {
@@ -48,24 +91,25 @@
 
                   //   human selection
 
-                  var text;
-                  var prom = prompt("Human! - rock paper or scissors?");
-                  var hum = "human : ";
-                  if ((prom == "rock") || (prom == "paper") || (prom == "scissors")) {
-                      text = hum + prom;
-                      console.log(text);
-                  }
-                  else if (prom == null || prom == "") {
-                      text = "you said nought";
-                      prom = hum + text;
-                      console.log(text);
-                  } else if (prom !== "rock" || prom !== "paper" || prom !== "scissors") {
-                      text = "wrong input, try again";
-                      prom = hum + text;
-                      console.log(text);
-                  }
+                 var text;
+//                  var prom = prompt("Human! - rock paper or scissors?");
 
-                  document.getElementById("funB").innerHTML = text;
+                  var hum = "human : ";
+                  if ((scissorsImg.querySelect == "rock") || (clicked == "paper") || (clicked == "scissors")) {
+                      text = hum + clicked;
+                      console.log(text);
+                  }
+//                  else if (prom == null || prom == "") {
+//                      text = "you said nought";
+//                      prom = hum + text;
+//                      console.log(text);
+//                  } else if (prom !== "rock" || prom !== "paper" || prom !== "scissors") {
+//                      text = "wrong input, try again";
+//                      prom = hum + text;
+//                      console.log(text);
+//                  }
+
+                  document.getElementById("funB").innerHTML = clicked;
 
                   arrayHuman.push(prom);
                   console.log("Human Array: " + arrayHuman);
