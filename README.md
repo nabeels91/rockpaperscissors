@@ -1,6 +1,6 @@
 instructions:
 
-this si the rock paper scissors app in javascript.
+this is the rock paper scissors app in javascript.
 
 definately one for the portfolio and to redo once or twice.
 
@@ -9,9 +9,12 @@ done..
 
 now to add images!
 
+
+-- make the click of the image show on the screen, "you've clicked rock.... paper,  scissors"
+
 rather than put in rock, click the rock image.
 =======
-lets do this from the 4/06/2018 - 01/08/2018.
+lets do this start 4/06/2018
 
 project on heroku: https://rpsnabeel.herokuapp.com
 

@@ -19,7 +19,7 @@
         <button onclick="getElementById('tester').innerHTML=new Date().toLocaleString()">What is the time?</button>
         -->
 
-        <!--<button onclick="computerPlay()" >compMove</button>-->
+
         <h3 id="compM">computer move displayed here</h3>
 
 
@@ -41,18 +41,27 @@
 
           var masterArray = [];
           var arrayWins = [];
+          var arrayHuman = [];
 
 
-
-          var clicked;
+          var clicked ='';
 
           //rock
           var rockImg = document.querySelector("#rockImg");
           rockImg.addEventListener('click', () =>
           {
-              console.log("rock clicked");
+              clicked = 'rock';
+
+          console.log(clicked);
+
+          document.getElementById('funB').innerHTML = "human: " +clicked;
+          //arrayHuman.push(clicked);
+          console.log(arrayHuman);
           //alert("click rock");
-          clicked= 'rock';
+          compMove();
+
+          theGame();
+          whoWon();
 
           }
           );
@@ -60,9 +69,17 @@
           var paperImg = document.querySelector("#paperImg");
           paperImg.addEventListener('click', () =>
           {
-              console.log("paper clicked");
-         // alert("click paper");
-          clicked= 'paper';
+              clicked= 'paper';
+          console.log(clicked);
+          // alert("click paper");
+          document.getElementById('funB').innerHTML ="human: " +clicked;
+          //arrayHuman.push(clicked);
+          console.log(arrayHuman);
+
+          compMove();
+
+          theGame();
+          whoWon();
 
           }
           );
@@ -70,19 +87,62 @@
           var scissorsImg = document.querySelector("#scissorsImg");
           scissorsImg.addEventListener('click', () =>
           {
-              console.log("scissors clicked");
-         // alert("click scissors");
-          clicked= 'scissors';
+              clicked= 'scissors';
+          console.log(clicked);
+          // alert("click scissors");
+          document.getElementById('funB').innerHTML = "human: " +clicked;
+          //arrayHuman.push(clicked);
+          console.log(arrayHuman);
+
+          compMove();
+
+          theGame();
+          whoWon();
+
           }
 
           );
 
+          var arrayComp = [];
+
+          var rreturn;// the computers move
+          var prom = clicked;
+
+          function compMove(){
+
+
+              var rock = 0.33;
+              var paper = 0.66;
+
+              // Computer selection
+
+              var compMoves = Math.random();
+
+              var comp = "computer : ";
+
+              if (compMoves <= rock) {
+                  rreturn = 'rock';
+                  console.log(comp + rreturn);
+              } else if (compMoves <= paper && compMoves > rock) {
+                  rreturn = 'paper';
+                  console.log(comp + rreturn);
+              } else {
+                  rreturn = 'scissors';
+                  console.log(comp + rreturn);
+              }
+
+              document.getElementById("compM").innerHTML = comp + rreturn;
+
+              arrayComp.push(rreturn);
+              console.table(arrayComp);
+          }
+
+
+
 
               function theGame() {
-                  var arrayHuman = [];
-                  var arrayComp = [];
-                  var rock = 0.33;
-                  var paper = 0.66;
+
+
 
 
                   // the README.md: 1 make the computer selection not a fucntion.
@@ -91,13 +151,14 @@
 
                   //   human selection
 
-                 var text;
-//                  var prom = prompt("Human! - rock paper or scissors?");
 
-                  var hum = "human : ";
-                  if ((scissorsImg.querySelect == "rock") || (clicked == "paper") || (clicked == "scissors")) {
-                      text = hum + clicked;
-                      console.log(text);
+                 var text;
+                 // var prom = prompt("Human! - rock paper or scissors?");
+
+                  //var hum = "human : ";
+                  if ((clicked == "rock") || (clicked == "paper") || (clicked == "scissors")) {
+                      text = clicked;
+
                   }
 //                  else if (prom == null || prom == "") {
 //                      text = "you said nought";
@@ -109,114 +170,107 @@
 //                      console.log(text);
 //                  }
 
-                  document.getElementById("funB").innerHTML = clicked;
+                  document.getElementById("funB").innerHTML = 'human : '+clicked;
 
-                  arrayHuman.push(prom);
-                  console.log("Human Array: " + arrayHuman);
+                  arrayHuman.push(clicked);
+
 
 
                   // if ((prom == null || prom == "") || (prom !== "rock" || prom !== "paper" || prom !== "scissors")){}
 
-                  // Computer selection
 
-                  var compMove = Math.random();
-                  var rreturn;
-                  var comp = "computer : ";
-
-                  if (compMove <= rock) {
-                      rreturn = 'rock';
-                      console.log(comp + rreturn);
-                  } else if (compMove <= paper && compMove > rock) {
-                      rreturn = 'paper';
-                      console.log(comp + rreturn);
-                  } else {
-                      rreturn = 'scissors';
-                      console.log(comp + rreturn);
-                  }
-
-                  document.getElementById("compM").innerHTML = comp + rreturn;
-
-                  arrayComp.push(rreturn);
-                  console.log("Computer Array: " + arrayComp);
-
-                  // comparison between comp and human
-                  var inputC = rreturn;
-                  var inputH = prom;
-                  var winner = "";
-
-                  if (inputC == inputH) {
-                      winner = "Draw";
-                      console.log(winner);
-                  }
-
-                  else if ((inputH == "paper" && inputC == "scissors") ||
-                      (inputH == 'scissors' && inputC == 'rock') ||
-                      (inputC == 'paper' && inputH == 'rock')) {
-                      winner = "computer";
-                      console.log(winner + " wins with " + inputC);
-
-                  }
-
-                  else if ((inputC == 'paper' && inputH == 'scissors') ||
-                      (inputC == 'scissors' && inputH == 'rock') ||
-                      (inputH == 'paper' && inputC == 'rock')) {
-                      winner = "human";
-                      console.log(winner + " wins with " + inputH);
-
-                  }
-
-                  if ((winner == "computer") || (winner == "human")) {
-                      document.getElementById("text1").innerHTML = "Result : " + winner + " wins";
-                  }
-                  else
-                      document.getElementById("text1").innerHTML = "Result : " + winner;
-
-
-                  if ((winner == "Draw") || (winner == "")) {
-                      masterArray;
-                      console.table(masterArray);
-
-                  } else {
-                      masterArray.push([inputC, inputH, winner]);
-                      arrayWins.push(winner);
-                      console.table(masterArray);
-                      console.log(arrayWins);
-                  }
-
-
-                  var cWins = 0;
-                  var hWins = 0;
-                  if (masterArray.length == 5) {
-
-                      for (var i = 0; i < 5; i++) {
-                          if (arrayWins[i] == "computer") {
-                              ++cWins;
-                          } else {
-                              ++hWins;
-
-                          }
-
-                      }
-                      console.log("computer wins : " + cWins);
-                      console.log("human wins : " + hWins);
-                      document.getElementById("5games").innerHTML = "result after 5 games : " + "human Wins: " + hWins + ", computer wins " + cWins;
-                      var oWinner;
-                      if (cWins > hWins) {
-                          oWinner = "computer";
-                      }
-                      else {
-                          oWinner = "human";
-                      }
-                      document.getElementById("overall").innerHTML = "overall winner : " + oWinner;
-
-
-                  }
-                  if (masterArray.length == 5){
-                      document.getElementById("thebutton").disabled = true;
-                  }
 
               }
 
+          // comparison between comp and human
+
+
+        function whoWon() {
+
+            var inputC = rreturn;
+            var inputH = clicked;
+            var winner;
+
+            if (inputC == inputH) {
+                winner = "Draw";
+                console.log(winner);
+            }
+
+
+
+            else if ((inputH == "paper" && inputC == "scissors") ||
+                (inputH == 'scissors' && inputC == 'rock') ||
+                (inputC == 'paper' && inputH == 'rock')) {
+                winner = "computer";
+                console.log(winner + " wins with " + inputC);
+                console.log('inputC ' + inputC);
+                console.log('input human ' + inputH);
+
+
+            }
+
+            else if ((inputC == 'paper' && inputH == 'scissors') ||
+                (inputC == 'scissors' && inputH == 'rock') ||
+                (inputH == 'paper' && inputC == 'rock')) {
+                winner = "human";
+                console.log(winner + " wins with " + inputH);
+
+            }
+
+            if ((winner == "computer") || (winner == "human")) {
+                document.getElementById("text1").innerHTML = "Result : " + winner + " wins";
+            }
+            else
+                document.getElementById("text1").innerHTML = "Result : " + winner;
+
+
+
+            if ((winner == "Draw") || (winner == "")) {
+                masterArray;
+                console.table(masterArray);
+
+            } else {
+                masterArray.push([inputC, inputH, winner]);
+                arrayWins.push(winner);
+                console.table(masterArray);
+                console.log(arrayWins);
+            }
+
+
+            var cWins = 0;
+            var hWins = 0;
+            if (masterArray.length == 5) {
+
+                for (var i = 0; i < 5; i++) {
+                    if (arrayWins[i] == "computer") {
+                        ++cWins;
+                    } else {
+                        ++hWins;
+
+                    }
+
+                }
+                console.log("computer wins : " + cWins);
+                console.log("human wins : " + hWins);
+                document.getElementById("5games").innerHTML = "result after 5 games : " + "human Wins: " + hWins + ", computer wins " + cWins;
+
+                var oWinner;
+                if (cWins > hWins) {
+                    oWinner = "computer";
+                }
+                else {
+                    oWinner = "human";
+                }
+                document.getElementById("overall").innerHTML = "overall winner : " + oWinner;
+
+
+            }
+            if (masterArray.length == 5) {
+                document.getElementById("rockImg").disabled = true;
+                document.getElementById("paperImg").disabled = true;
+                document.getElementById("scissorsImg").disabled = true;
+            }
+        }
 
 
 //                    if (inputH == 'paper' && inputC == 'scissors') {
